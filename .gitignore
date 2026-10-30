@@ -1,0 +1,16 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor metadata
+.vscode/
+.idea/
+
+# Local-only settings and logs
+.env
+.env.*
+*.log
+
+# Optional local dependency directory; this static project does not commit dependencies
+node_modules/
