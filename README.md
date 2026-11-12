@@ -18,8 +18,10 @@ An interactive visualizer for exploring how binary bit streams are represented b
 ## Features
 
 - Bit-stream input starts at length `0` with an empty stream.
-- All results appear under one OUTPUT section, including waveform and token output.
+- Waveforms and per-bit tokens appear in the Waveforms Comparison section.
 - Initial-level controls for differential schemes.
+- Inverse indicators for Polar NRZ-I and Differential Manchester, for both High and Low initial levels: hollow means no inverse, and solid means inverse.
+- An inverse marks a signal-level flip at the start of a bit. The first bit is compared with the selected initial level; Differential Manchester's mid-bit transition is always present and is not marked.
 - Light and dark themes with the selected preference saved.
 - Responsive layout for desktop and mobile.
 - Keyboard accessibility and reduced-motion support.
