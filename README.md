@@ -1,8 +1,6 @@
 # Line Coding Scheme Visualizer
 
-An interactive visualizer for exploring how binary bit streams are represented by digital line coding schemes. Enter bits to compare their signal waveforms and per-bit output tokens.
-
-**Live demo:** https://chrstanjb.github.io/line-coding-scheme-visualizer/
+An interactive static visualizer for comparing binary line coding schemes.
 
 ## Supported schemes
 
@@ -17,24 +15,22 @@ An interactive visualizer for exploring how binary bit streams are represented b
 
 ## Features
 
-- Bit-stream input starts at length `0` with an empty stream.
-- Waveforms and per-bit tokens appear in the Waveforms Comparison section.
-- Initial-level controls for differential schemes.
-- Inverse indicators for Polar NRZ-I and Differential Manchester, for both High and Low initial levels: hollow means no inverse, and solid means inverse.
-- An inverse marks a signal-level flip at the start of a bit. The first bit is compared with the selected initial level; Differential Manchester's mid-bit transition is always present and is not marked.
-- Light and dark themes with the selected preference saved.
-- Responsive layout for desktop and mobile.
-- Keyboard accessibility and reduced-motion support.
+- The page starts with a zero length and an untouched starter `0`; the stream is empty until submission. Press **Encode stream** to validate and present a snapshot. Editing encoded inputs shows ?Input changed. Press Encode stream to update.? Typing alone does not update the waveforms.
+- Separate **Play animation**, **Pause animation**, and **Stop animation** controls; the shared playhead can be dragged or moved with the keyboard.
+- Each panel keeps its bits, waveform, inversion markers, and output tokens in a horizontally scrollable aligned layout.
+- Hollow circles mean no inverse; solid circles mean inverse. Markers appear on NRZ-I and Differential Manchester waveforms for High and Low initial levels. Differential Manchester mid-bit transitions are always present and are not marked.
+- Quick references cover all eight schemes.
+- Light and dark themes retain the saved preference. The interface supports reduced motion, keyboard use, and responsive layouts.
 
 ## How to use
 
-1. Choose a stream length and enter exactly that many bits. The stream starts empty; the displayed `0` is only a starter value.
-2. Choose which schemes to compare, and select an initial level for differential schemes.
-3. Read each scheme's tokens and waveform in the OUTPUT section. Use **Play animation** to follow the bit stream.
+1. Choose the stream length and enter exactly that many bits. The displayed starter `0` is only a placeholder until you submit it.
+2. Choose schemes and an initial level, then press **Encode stream**.
+3. Use the animation controls to follow the encoded stream. Change input settings and encode again to refresh the displayed snapshot.
 
 ## Run locally
 
-This is a static site with no build step or dependencies. From the project folder, run:
+This static site has no build step or dependencies. From the project folder, run:
 
 ```sh
 python -m http.server 8000
@@ -42,14 +38,6 @@ python -m http.server 8000
 
 Then open http://localhost:8000.
 
-## Project structure
-
-- `index.html` — page structure and controls
-- `css/style.css` — responsive layout and themes
-- `js/app.js` — encoders, rendering, and interactions
-
 ## Notes
 
-Differential Manchester follows the implemented rule: a `0` causes an inversion at the bit boundary, a `1` does not, and every bit has a mid-bit transition. The supplied reference sample `111001011000` marks its third bit as inverted, which does not match this rule.
-
-The author tested the site in a desktop browser and a phone browser.
+The implemented Differential Manchester rule inverts at the bit boundary for `0`, does not invert for `1`, and transitions mid-bit for every bit. The supplied reference sample `111001011000` marks its third bit as inverted; that differs from the implemented rule.
