@@ -2,6 +2,10 @@
 
 A static interactive visualizer for comparing how binary streams map to digital signals.
 
+## Live demo
+
+[Open the GitHub Pages demo](https://chrstanjb.github.io/line-coding-scheme-visualizer/).
+
 ## Supported schemes
 
 - **Unipolar:** Unipolar NRZ
